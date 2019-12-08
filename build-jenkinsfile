@@ -32,7 +32,7 @@ sh 'mvn test'
 }
 stage('build')
 {
-stpes
+steps
 {
 withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
 {
