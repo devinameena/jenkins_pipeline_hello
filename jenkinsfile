@@ -7,7 +7,7 @@ stage('cloning code')
 {
 steps
 {
-git 'https://github.com/devinameena/jenkins_pipeline_hello.git'
+git 'https://github.com/devinameena/maven-project.git'
 }
 }
 stage('compile my preoject')
