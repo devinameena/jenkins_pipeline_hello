@@ -25,7 +25,9 @@ stage('test')
 steps
 {
 withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
+{
 sh 'mvn test'
+}
 }
 }
 }
