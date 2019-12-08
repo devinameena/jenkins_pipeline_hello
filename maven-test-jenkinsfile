@@ -1,7 +1,6 @@
 pipeline
 {
 agent any
-{
 stages
 {
 stage('scm checkout')
@@ -27,7 +26,6 @@ steps
 {
 withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
 sh 'mvn test'
-}
 }
 }
 }
