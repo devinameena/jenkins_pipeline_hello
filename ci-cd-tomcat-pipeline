@@ -46,7 +46,7 @@ steps
 {
 sshagent(['tomcat']) 
 {
-sh 'scp -o StrictHostKeyChecking=no -1 */target/*.war ec2-user@54.198.177.65:/var/lib/tomcat/webapp/s'
+sh 'scp -o StrictHostKeyChecking=no -1 */target/*.war ec2-user@54.198.177.65:/var/lib/tomcat/webapps/'
 }
 }
 }
