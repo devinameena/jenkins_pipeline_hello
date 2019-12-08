@@ -1,0 +1,54 @@
+pipeline
+{
+agent any
+stages
+{
+stage('scm checkout')
+{
+steps
+{
+git 'https://github.com/devinameena/maven-project.git'
+}
+}
+stage('compile code')
+{
+steps
+{
+withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
+{
+   sh 'mvn compile'
+}
+}
+}
+stage('test')
+{
+steps
+{
+withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
+{
+sh 'mvn test'
+}
+}
+}
+stage('build')
+{
+steps
+{
+withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
+{
+sh 'mvn package'
+}
+}
+}
+stage('deploy to tomcat')
+{
+steps
+{
+sshagent (credentials: ['deploy-dev'])
+{
+sh 'ssh -o StrictHostKeyChecking=no */target/*.war ec2-user@54.198.177.65:/var/lib/tomcat/webapps'
+}
+}
+}
+}
+}
