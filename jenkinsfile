@@ -1,0 +1,23 @@
+pipeline
+{
+any agent
+stages
+{
+stage('cloning code')
+{
+steps
+{
+git 'https://github.com/devinameena/jenkins_pipeline_hello.git'
+}
+}
+stage('compile my preoject')
+{
+steps
+{
+withMaven(jdk: 'LocalJDK', maven: 'LocalMaven')
+{
+   sh 'mvn compile'
+}
+}
+}
+}
